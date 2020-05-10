@@ -47,7 +47,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	//{ "Firefox",  NULL,       NULL,       1<<0,         0,           -1 },
-	{ "Spotify",  NULL,		  NULL,		  1<<7,			0,			 -1 },
+	{ "Spotify",  NULL,		  NULL,		  1<<8,			0,			 -1 },
 };
 
 /* layout(s) */
@@ -82,6 +82,10 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *rofi_cmd[] = { "rofi", "-show", "run" };
 static const char *browser_cmd[] = { "firefox", NULL };
 static const char *spotify_cmd[] = { "spotify", NULL };
+static const char *bluetooth_cmd[] = { "xs-blue.sh", NULL };
+static const char *screenshot_single_cmd[] = { "xs-screenshot.sh", "single" };
+static const char *screenshot_all_cmd[] = { "xs-screenshot.sh", "all" };
+static const char *screenshot_select_cmd[] = { "xs-screenshot.sh", "select" };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -89,7 +93,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      spawn,          {.v = browser_cmd } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = spotify_cmd } },
 	{ MODKEY,		                XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,            			XK_b,      spawn,          {.v = bluetooth_cmd } },
+	//{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -117,6 +122,10 @@ static Key keys[] = {
 	{ MODKEY,						XK_minus,  setgaps,		   {.i = -1}},
 	{ MODKEY,						XK_equal,  setgaps,		   {.i = +1}},
 	{ MODKEY|ShiftMask,				XK_equal,  setgaps,		   {.i = 0}},
+	{ MODKEY|ShiftMask,				XK_equal,  setgaps,		   {.i = 0}},
+	{ 0,	 						XK_Print,  spawn,		   {.v = screenshot_all_cmd}},
+	{ ShiftMask,					XK_Print,  spawn,		   {.v = screenshot_select_cmd}},
+	{ MODKEY,						XK_Print,  spawn,		   {.v = screenshot_single_cmd}},
 };
 
 /* button definitions */
