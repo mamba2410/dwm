@@ -46,8 +46,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	//{ "Firefox",  NULL,       NULL,       1<<0,         0,           -1 },
+	{ "Spotify",  NULL,		  NULL,		  1<<7,			0,			 -1 },
 };
 
 /* layout(s) */
@@ -77,13 +77,15 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", xcolours[1], "-nf", xcolours[2], "-sb", xcolours[3], "-sf", xcolours[4], NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *rofi_cmd[] = { "rofi", "-show" };
+static const char *rofi_cmd[] = { "rofi", "-show", "run" };
 static const char *browser_cmd[] = { "firefox", NULL };
+static const char *spotify_cmd[] = { "spotify", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_r,      spawn,          {.v = rofi_cmd } },
 	{ MODKEY,                       XK_f,      spawn,          {.v = browser_cmd } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = spotify_cmd } },
 	{ MODKEY,		                XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
