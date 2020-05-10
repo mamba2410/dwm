@@ -46,7 +46,6 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      	instance				title			tags mask     isfloating   monitor */
-	//{ "Firefox",  NULL,       NULL,       1<<0,       	0,           -1 },
 	{ "Spotify",	NULL,		  			NULL,		  	1<<8,			0,			 -1 },
 	{ NULL,  		"maths_python",			NULL,		  	1<<9,			0,			 -1 },
 };
@@ -80,36 +79,44 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", xcolours[1], "-nf", xcolours[2], "-sb", xcolours[3], "-sf", xcolours[4], NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *rofi_cmd[] = { "rofi", "-show", "run" };
-static const char *browser_cmd[] = { "firefox", NULL };
-static const char *spotify_cmd[] = { "spotify", NULL };
-static const char *bluetooth_cmd[] = { "xs-blue.sh", NULL };
-static const char *screenshot_single_cmd[] = { "xs-screenshot.sh", "single" };
-static const char *screenshot_all_cmd[] = { "xs-screenshot.sh", "all" };
-static const char *screenshot_select_cmd[] = { "xs-screenshot.sh", "select" };
+
+#define cmd_t static const char*
+cmd_t rofi_cmd[] 				= { "rofi", "-show", "run" };
+cmd_t browser_cmd[]				= { "firefox", NULL };
+cmd_t spotify_cmd[]				= { "spotify", NULL };
+cmd_t bluetooth_cmd[]			= { "xs-blue.sh", NULL };
+cmd_t screenshot_single_cmd[]	= { "xs-screenshot.sh", "single" };
+cmd_t screenshot_all_cmd[]		= { "xs-screenshot.sh", "all" };
+cmd_t screenshot_select_cmd[]	= { "xs-screenshot.sh", "select" };
+cmd_t ecode_cmd[]				= { "xs-ecode.sh", NULL };
+cmd_t elatex_cmd[]				= { "xs-elatex.sh", NULL };
+cmd_t lock_screen_cmd[]				= { "xs-lock-screen.sh", NULL };
+cmd_t power_menu_cmd[]			= { "xs-power-menu.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY,            			XK_b,      spawn,          {.v = bluetooth_cmd } },
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY, 			            XK_e,      spawn,          {.v = power_menu_cmd} },
+	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 	{ MODKEY,                       XK_r,      spawn,          {.v = rofi_cmd } },
 	{ MODKEY,                       XK_f,      spawn,          {.v = browser_cmd } },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = spotify_cmd } },
-	{ MODKEY,		                XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,            			XK_b,      spawn,          {.v = bluetooth_cmd } },
-	//{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_g,	   setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY|ShiftMask,             XK_l,      spawn, 	       {.v = lock_screen_cmd} },
+	TAGKEYS(                        XK_p,                      9)
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = spotify_cmd } },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
+	{ MODKEY,		                XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_g,	   setlayout,      {.v = &layouts[3]} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -119,8 +126,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	TAGKEYS(                        XK_p,                      9)
-	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
+	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,						XK_minus,  setgaps,		   {.i = -1}},
 	{ MODKEY,						XK_equal,  setgaps,		   {.i = +1}},
 	{ MODKEY|ShiftMask,				XK_equal,  setgaps,		   {.i = 0}},
