@@ -38,16 +38,17 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	//{ "Firefox",  NULL,       NULL,       1<<0,         0,           -1 },
-	{ "Spotify",  NULL,		  NULL,		  1<<8,			0,			 -1 },
+	/* class      	instance				title			tags mask     isfloating   monitor */
+	//{ "Firefox",  NULL,       NULL,       1<<0,       	0,           -1 },
+	{ "Spotify",	NULL,		  			NULL,		  	1<<8,			0,			 -1 },
+	{ NULL,  		"maths_python",			NULL,		  	1<<9,			0,			 -1 },
 };
 
 /* layout(s) */
@@ -118,6 +119,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+	TAGKEYS(                        XK_p,                      9)
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 	{ MODKEY,						XK_minus,  setgaps,		   {.i = -1}},
 	{ MODKEY,						XK_equal,  setgaps,		   {.i = +1}},
