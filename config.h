@@ -90,21 +90,20 @@ cmd_t bluetooth_cmd[]			= { "xs-blue.sh", NULL };
 cmd_t screenshot_single_cmd[]	= { "xs-screenshot.sh", "single" };
 cmd_t screenshot_all_cmd[]		= { "xs-screenshot.sh", "all" };
 cmd_t screenshot_select_cmd[]	= { "xs-screenshot.sh", "select" };
-cmd_t ecode_cmd[]				= { "xs-ecode.sh", NULL };
-cmd_t elatex_cmd[]				= { "xs-elatex.sh", NULL };
+cmd_t rofi_code_cmd[]			= { "sh", "-c", "xs-cd-term.sh $XDG_DATA_HOME/xscripts/dirs_code.txt  code  2" };
+cmd_t rofi_latex_cmd[]			= { "sh", "-c", "xs-cd-term.sh $XDG_DATA_HOME/xscripts/dirs_latex.txt latex 2" };
 cmd_t lock_screen_cmd[]			= { "xs-lock-screen.sh", NULL };
 cmd_t power_menu_cmd[]			= { "xs-power-menu.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,            			XK_b,      spawn,          {.v = bluetooth_cmd } },
-	{ MODKEY,            			XK_c,      spawn,          {.v = ecode_cmd } },
+	{ MODKEY,            			XK_c,      spawn,          {.v = rofi_code_cmd } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY, 			            XK_e,      spawn,          {.v = power_menu_cmd} },
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
-	{ MODKEY,                       XK_r,      spawn,          {.v = rofi_cmd } },
 	{ MODKEY,                       XK_f,      spawn,          {.v = browser_cmd } },
-	{ MODKEY,                       XK_g,      spawn,          {.v = elatex_cmd } },
+	{ MODKEY,                       XK_g,      spawn,          {.v = rofi_latex_cmd } },
 	{ MODKEY|ShiftMask,             XK_g,	   setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -115,6 +114,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      togglescratch,  {.v = scratchpadcmd} },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = spotify_cmd } },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
+	{ MODKEY,                       XK_r,      spawn,          {.v = rofi_cmd } },
 	{ MODKEY,		                XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, setlayout,      {0} },
 	{ MODKEY,                       XK_space,  zoom,	       {0} },
