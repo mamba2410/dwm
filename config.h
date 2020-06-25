@@ -90,8 +90,8 @@ cmd_t bluetooth_cmd[]			= { "xs-blue.sh", NULL };
 cmd_t screenshot_single_cmd[]	= { "xs-screenshot.sh", "single" };
 cmd_t screenshot_all_cmd[]		= { "xs-screenshot.sh", "all" };
 cmd_t screenshot_select_cmd[]	= { "xs-screenshot.sh", "select" };
-cmd_t rofi_code_cmd[]			= { "sh", "-c", "xs-cd-term.sh $XDG_DATA_HOME/xscripts/dirs_code.txt  code  2" };
-cmd_t rofi_latex_cmd[]			= { "sh", "-c", "xs-cd-term.sh $XDG_DATA_HOME/xscripts/dirs_latex.txt latex 2" };
+cmd_t rofi_code_cmd[]			= { "sh", "-c", "xs-cd-term.sh $XDG_DATA_HOME/xscripts/data/dirs_code.txt  code  2" };
+cmd_t rofi_latex_cmd[]			= { "sh", "-c", "xs-cd-term.sh $XDG_DATA_HOME/xscripts/data/dirs_latex.txt latex 2" };
 cmd_t lock_screen_cmd[]			= { "xs-lock-screen.sh", NULL };
 cmd_t power_menu_cmd[]			= { "xs-power-menu.sh", NULL };
 
