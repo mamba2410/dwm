@@ -1065,6 +1065,22 @@ loadxrdb()
         XRDB_LOAD_COLOR("dwm.selbordercolor", selbordercolor);
         XRDB_LOAD_COLOR("dwm.selbgcolor", selbgcolor);
         XRDB_LOAD_COLOR("dwm.selfgcolor", selfgcolor);
+        XRDB_LOAD_COLOR("*.color0", (xrescolors[0]));
+        XRDB_LOAD_COLOR("*.color1", (xrescolors[1]));
+        XRDB_LOAD_COLOR("*.color2", (xrescolors[2]));
+        XRDB_LOAD_COLOR("*.color3", (xrescolors[3]));
+        XRDB_LOAD_COLOR("*.color4", (xrescolors[4]));
+        XRDB_LOAD_COLOR("*.color5", (xrescolors[5]));
+        XRDB_LOAD_COLOR("*.color6", (xrescolors[6]));
+        XRDB_LOAD_COLOR("*.color7", (xrescolors[7]));
+        XRDB_LOAD_COLOR("*.color8", (xrescolors[8]));
+        XRDB_LOAD_COLOR("*.color9", (xrescolors[9]));
+        XRDB_LOAD_COLOR("*.color10", (xrescolors[10]));
+        XRDB_LOAD_COLOR("*.color11", (xrescolors[11]));
+        XRDB_LOAD_COLOR("*.color12", (xrescolors[12]));
+        XRDB_LOAD_COLOR("*.color13", (xrescolors[13]));
+        XRDB_LOAD_COLOR("*.color14", (xrescolors[14]));
+        XRDB_LOAD_COLOR("*.color15", (xrescolors[15]));
       }
     }
   }
